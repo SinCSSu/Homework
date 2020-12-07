@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
+#include <QString>
 
 
 namespace Ui {
@@ -15,12 +16,13 @@ class User : public QWidget
     Q_OBJECT
 
 public:
-    explicit User(QWidget *parent = nullptr);
+    explicit User(QString name,QWidget *parent = nullptr);
     ~User();
 
 private:
     Ui::User *ui;
     void ini();
+    QString name;
 
 signals:
     void click_back();

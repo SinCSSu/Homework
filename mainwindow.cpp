@@ -24,18 +24,29 @@ void MainWindow::ini()
     connect(menu,&Menu::click_exit,this,[=](){
         exit(0);
     });
+
     connect(menu,&Menu::click_user,this,[=](){
         login = new Login(0,this);
         login->show();
-        //user = new User(this);
         menu->close();
-        //user->show();
 
-//        connect(user,&User::click_back,this,[=](){
-//            user->close();
-//            ini();
-//        });
+        connect(login,&Login::click_back,this,[=](){
+            ini();
+            login->close();
+        });
+
+        connect(login,&Login::succeed,this,[=](QString name){
+           user = new User(name,this);
+           user->show();
+           login->close();
+
+           connect(user,&User::click_back,this,[=](){
+                ini();
+               user->close();
+           });
+        });
     });
+
     connect(menu,&Menu::click_salor,this,[=](){
         salor = new Salor(this);
         menu->close();
@@ -46,6 +57,7 @@ void MainWindow::ini()
             ini();
         });
     });
+
     connect(menu,&Menu::click_admin,this,[=](){
         admin = new Administrator(this);
         menu->close();

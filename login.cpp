@@ -31,6 +31,10 @@ void Login::ini(int mood)
     case 2: //admin mood
         break;
     }
+
+    connect(ui->back_button,&QPushButton::clicked,this,[=](){
+       emit click_back();
+    });
 }
 
 void Login::login_user()
@@ -41,5 +45,29 @@ void Login::login_user()
     QString username,passwd;
     username = ui->username->text();
     passwd = ui->passwd->text();
-
+    if(username.size()==0)
+    {
+        ui->massage->setText("请输入用户名");
+    }
+    else if(passwd.size()==0)
+    {
+        ui->massage->setText("请输入密码");
+    }
+    else
+    {
+        int pos = userdata.SearchData(username);
+        if(pos == -1)
+        {
+            ui->massage->setText("该用户不存在");
+        }
+        else
+        {
+            if(passwd == userdata.arr[pos].passwd)
+            {
+                emit succeed(username);
+            }
+            else
+                ui->massage->setText("密码错误");
+        }
+    }
 }

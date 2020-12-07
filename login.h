@@ -23,10 +23,12 @@ private:
     Ui::Login *ui;
     void ini(int mood);
     void login_user();
+    //void login_admin();
+    //void login_salor();
 
 signals:
-    void succeed();
-    void failed();
+    void succeed(QString name);
+    void click_back();
 };
 
 #endif // LOGIN_H

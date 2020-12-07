@@ -22,8 +22,10 @@ class UserData : public List<userNode>
 public:
     UserData();
     void GetData();
-    //int SearchData(QString id);
-    //bool DelData();
+    int SearchData(QString id);
+    bool DelData(int pos);
+private:
+    int usernum = 0;
 };
 
 #endif // USERDATA_H

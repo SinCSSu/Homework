@@ -52,6 +52,16 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QLabel" name="userinfo">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item row="1" column="0">
