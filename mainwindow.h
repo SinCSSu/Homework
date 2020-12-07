@@ -7,6 +7,7 @@
 #include "salor.h"
 #include "administrator.h"
 #include "menu.h"
+#include "login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +26,7 @@ private:
     Ui::MainWindow *ui;
     User * user;
     Salor * salor;
+    Login *login;
     Administrator * admin;
     Menu *menu;
 

@@ -17,29 +17,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     administrator.cpp \
-    linklist.cpp \
-    linkqueue.cpp \
-    list.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
+    personmanage.cpp \
     salor.cpp \
-    user.cpp
+    user.cpp \
+    userdata.cpp
 
 HEADERS += \
     administrator.h \
     linklist.h \
     linkqueue.h \
     list.h \
+    login.h \
     mainwindow.h \
     menu.h \
+    personmanage.h \
     salor.h \
-    user.h
+    user.h \
+    userdata.h
 
 FORMS += \
     administrator.ui \
+    login.ui \
     mainwindow.ui \
     menu.ui \
+    personmanage.ui \
     salor.ui \
     user.ui
 

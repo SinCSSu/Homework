@@ -25,14 +25,16 @@ void MainWindow::ini()
         exit(0);
     });
     connect(menu,&Menu::click_user,this,[=](){
-        user = new User(this);
+        login = new Login(0,this);
+        login->show();
+        //user = new User(this);
         menu->close();
-        user->show();
+        //user->show();
 
-        connect(user,&User::click_back,this,[=](){
-            user->close();
-            ini();
-        });
+//        connect(user,&User::click_back,this,[=](){
+//            user->close();
+//            ini();
+//        });
     });
     connect(menu,&Menu::click_salor,this,[=](){
         salor = new Salor(this);
