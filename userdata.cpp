@@ -41,22 +41,26 @@ void UserData::GetData()
 
 int UserData::SearchData(QString id)
 {
-    int i;
-    for(i = 0;i < usernum;i++)
+    int top,bottom,mid;
+    top = 0;
+    bottom = usernum - 1;
+    while(top <= bottom)
     {
-        if(id==arr[i].id)
+        mid = (top+bottom)/2;
+        if(id.toInt() < arr[mid].id.toInt())
         {
-            break;
+            bottom = mid -1;
+        }
+        else if(id.toInt() > arr[mid].id.toInt())
+        {
+            top = mid +1;
+        }
+        else if(id.toInt() == arr[mid].id.toInt())
+        {
+            return mid;
         }
     }
-    if(i == usernum)
-    {
-        return -1;
-    }
-    else
-    {
-        return i;
-    }
+    return -1;
 }
 
 bool UserData::DelData(int pos)
