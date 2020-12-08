@@ -1,5 +1,21 @@
 #include "userdata.h"
 
+userNode::userNode()
+{
+    id.clear();
+    passwd.clear();
+    phone.clear();
+}
+
+userNode::userNode(const QString& id,const QString &passwd,const QString &phone):
+    id(id),passwd(passwd),phone(phone)
+{
+
+}
+
+
+
+
 UserData::UserData():List<userNode>(MAX_USER_NUM)
 {
     //Create(MAX_USER_NUM);
@@ -52,9 +68,17 @@ bool UserData::DelData(int pos)
     else
     {
         RmData(pos);
+        usernum--;
         return true;
     }
 }
+
+void UserData::AddData(const userNode & node, int pos)
+{
+    AddElem(node,pos);
+    usernum++;
+}
+
 
 int UserData::size()
 {

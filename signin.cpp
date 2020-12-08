@@ -81,27 +81,27 @@ void Signin::sign()
         }
         else
         {
-            userNode temp;
-            temp.id = username;
-            temp.phone = phone;
-            temp.passwd = passwd;
-
             bool added = false;
             int i;
 
             for(i = 0;i<user->size();i++)
             {
-                if(username.toInt() < user->arr[i].id.toInt())
+                if(username.toInt() > user->arr[i].id.toInt())
                 {
                     continue;
                 }
-                user->AddElem(temp,i+1);
+                user->AddData(userNode(username,passwd,phone),i);
                 added = true;
+                break;
             }
 
             if(!added)
             {
-                user->AddElem(temp,user->size());
+                user->AddData(userNode(username,passwd,phone),user->size());
+            }
+            for(int i = 0 ; i < user->size();i++)
+            {
+                qDebug() << user->arr[i].id << ' ' << user->arr[i].phone << user->arr[i].passwd << '\n';
             }
             QMessageBox::StandardButton result =  QMessageBox::information(NULL,"注册成功","注册成功");
             if(result == QMessageBox::Ok)

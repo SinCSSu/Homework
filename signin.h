@@ -10,6 +10,7 @@
 #include <QRegExp>
 #include <QValidator>
 #include <QMessageBox>
+#include <QDebug>
 #include "userdata.h"
 
 namespace Ui {
