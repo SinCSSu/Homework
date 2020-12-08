@@ -12,9 +12,9 @@
 class userNode
 {
 public:
-    QString id;
-    QString passwd;
-    QString phone;
+    QString id = 0;
+    QString passwd = 0;
+    QString phone = 0;
 };
 
 class UserData : public List<userNode>
@@ -24,6 +24,7 @@ public:
     void GetData();
     int SearchData(QString id);
     bool DelData(int pos);
+    int size();
 private:
     int usernum = 0;
 };

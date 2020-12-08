@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("美团餐馆预定管理信息系统");
     ini();
+
 }
 
 MainWindow::~MainWindow()

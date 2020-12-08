@@ -6,6 +6,7 @@
 #include <QFile>
 #include <userdata.h>
 #include <QDebug>
+#include "signin.h"
 
 namespace Ui {
 class Login;
@@ -21,10 +22,15 @@ public:
 
 private:
     Ui::Login *ui;
+
+    Signin * signin_user;
+
     void ini(int mood);
     void login_user();
     //void login_admin();
     //void login_salor();
+
+
 
 signals:
     void succeed(QString name);

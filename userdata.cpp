@@ -19,6 +19,7 @@ void UserData::GetData()
         //qDebug() << arr[i].id <<' '<< arr[i].passwd<<' ' << arr[i].phone<< '\n';
         i++;
     }
+    input.close();
     usernum = i;
 }
 
@@ -53,4 +54,9 @@ bool UserData::DelData(int pos)
         RmData(pos);
         return true;
     }
+}
+
+int UserData::size()
+{
+    return usernum;
 }

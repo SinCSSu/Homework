@@ -16,6 +16,9 @@ Login::~Login()
 
 void Login::ini(int mood)
 {
+
+
+
     ui->passwd->setEchoMode(QLineEdit::Password);
     ui->username->setPlaceholderText("用户名");
     ui->passwd->setPlaceholderText("密码");
@@ -25,6 +28,21 @@ void Login::ini(int mood)
     {
     case 0: //user mood
         connect(ui->log_in,&QPushButton::clicked,this,&Login::login_user);
+        connect(ui->sign_up,&QPushButton::clicked,this,[=](){
+           signin_user = new Signin();
+           signin_user->show();
+
+           connect(signin_user,&Signin::succeed,this,[=](QString id){
+                signin_user->close();
+                emit succeed(id);
+           });
+
+//           connect(signin_user,&Signin::click_back,this,[=](){
+//               ini(0);
+//               signin_user->close();
+//           });
+        });
+
         break;
     case 1: //salor mood
         break;
@@ -35,6 +53,7 @@ void Login::ini(int mood)
     connect(ui->back_button,&QPushButton::clicked,this,[=](){
        emit click_back();
     });
+
 }
 
 void Login::login_user()

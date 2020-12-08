@@ -23,6 +23,7 @@ SOURCES += \
     menu.cpp \
     personmanage.cpp \
     salor.cpp \
+    signin.cpp \
     user.cpp \
     userdata.cpp
 
@@ -36,6 +37,7 @@ HEADERS += \
     menu.h \
     personmanage.h \
     salor.h \
+    signin.h \
     user.h \
     userdata.h
 
@@ -46,6 +48,7 @@ FORMS += \
     menu.ui \
     personmanage.ui \
     salor.ui \
+    signin.ui \
     user.ui
 
 # Default rules for deployment.
