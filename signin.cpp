@@ -83,7 +83,7 @@ void Signin::sign()
         {
             bool added = false;
             int i;
-
+            passwd = QCryptographicHash::hash(passwd.toUtf8(),QCryptographicHash::Md5).toHex();
             for(i = 0;i<user->size();i++)
             {
                 if(username.toInt() > user->arr[i].id.toInt())
@@ -103,6 +103,7 @@ void Signin::sign()
             {
                 qDebug() << user->arr[i].id << ' ' << user->arr[i].phone << user->arr[i].passwd << '\n';
             }
+            user->WriteData();
             QMessageBox::StandardButton result =  QMessageBox::information(NULL,"注册成功","注册成功");
             if(result == QMessageBox::Ok)
             {

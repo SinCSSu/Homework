@@ -32,6 +32,8 @@ void UserData::GetData()
     while(!data.atEnd())
     {
         data >> arr[i].id >> arr[i].passwd >> arr[i].phone;
+        if(arr[i].id == "")
+            break;
         //qDebug() << arr[i].id <<' '<< arr[i].passwd<<' ' << arr[i].phone<< '\n';
         i++;
     }
@@ -63,6 +65,16 @@ int UserData::SearchData(QString id)
     return -1;
 }
 
+void UserData::_hashcode()
+{
+    for(int i = 0; i < usernum;i++)
+    {
+        QByteArray md5_code;
+        md5_code = QCryptographicHash::hash(arr[i].passwd.toUtf8(),QCryptographicHash::Md5);
+        arr[i].passwd = md5_code.toHex();
+    }
+}
+
 bool UserData::DelData(int pos)
 {
     if(pos <0||pos >= usernum)
@@ -81,6 +93,21 @@ void UserData::AddData(const userNode & node, int pos)
 {
     AddElem(node,pos);
     usernum++;
+}
+
+void UserData::WriteData()
+{
+    QFile outout_file("./data/user.txt");
+    outout_file.open(QFile::WriteOnly);
+    QTextStream output(&outout_file);
+
+    output.setCodec("UTF-8");
+    output << QString("用户账号 密码 联系方式") << endl;
+    for(int i = 0 ; i< usernum;i++)
+    {
+        output << arr[i].id << ' ' << arr[i].passwd << ' ' << arr[i].phone << endl;
+    }
+    outout_file.close();
 }
 
 

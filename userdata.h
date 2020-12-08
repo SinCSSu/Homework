@@ -6,6 +6,8 @@
 #include <QString>
 #include <QFile>
 #include <QTextStream>
+#include <QCryptographicHash>
+#include <QByteArray>
 #include <QDebug>
 #include "list.h"
 
@@ -27,6 +29,8 @@ public:
     int SearchData(QString id);
     bool DelData(int pos);
     void AddData(const userNode & node,int pos);
+    void WriteData();
+    void _hashcode();
     int size();
 
 private:

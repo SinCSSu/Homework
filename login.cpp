@@ -81,6 +81,7 @@ void Login::login_user()
         }
         else
         {
+            passwd = QCryptographicHash::hash(passwd.toUtf8(),QCryptographicHash::Md5).toHex();
             if(passwd == userdata.arr[pos].passwd)
             {
                 emit succeed(username);
