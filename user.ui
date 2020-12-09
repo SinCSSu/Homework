@@ -89,21 +89,21 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="search_salor_button">
          <property name="text">
           <string>查询商家</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="due_button">
          <property name="text">
           <string>预定功能</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="recommand_button">
          <property name="text">
           <string>推荐功能</string>
          </property>

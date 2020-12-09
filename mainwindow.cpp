@@ -37,14 +37,19 @@ void MainWindow::ini()
         });
 
         connect(login,&Login::succeed,this,[=](QString name){
-           user = new User(name,this);
-           user->show();
-           login->close();
+            user = new User(name,this);
+            user->show();
+            login->close();
 
-           connect(user,&User::click_back,this,[=](){
+            connect(user,&User::click_back,this,[=](){
                 ini();
-               user->close();
-           });
+                user->close();
+            });
+
+            connect(user,&User::click_search,this,[=](){
+                user->ini_search(this);
+                user->close();
+            });
         });
     });
 

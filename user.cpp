@@ -21,4 +21,14 @@ void User::ini()
     connect(ui->back_button,&QPushButton::clicked,this,[=](){
         emit click_back();
     });
+
+    connect(ui->search_salor_button,&QPushButton::clicked,this,[=](){
+        emit click_search();
+    });
+}
+
+void User::ini_search(QWidget *parent)
+{
+    search = new SearchSalor(parent);
+    search->show();
 }

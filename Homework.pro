@@ -23,6 +23,8 @@ SOURCES += \
     menu.cpp \
     personmanage.cpp \
     salor.cpp \
+    searchsalor.cpp \
+    shopdata.cpp \
     signin.cpp \
     user.cpp \
     userdata.cpp
@@ -37,6 +39,8 @@ HEADERS += \
     menu.h \
     personmanage.h \
     salor.h \
+    searchsalor.h \
+    shopdata.h \
     signin.h \
     user.h \
     userdata.h
@@ -48,6 +52,7 @@ FORMS += \
     menu.ui \
     personmanage.ui \
     salor.ui \
+    searchsalor.ui \
     signin.ui \
     user.ui
 
