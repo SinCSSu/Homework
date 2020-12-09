@@ -1,7 +1,7 @@
 #ifndef SHOPSDATA_H
 #define SHOPSDATA_H
 
-#define MAXSIZE 100000
+#define MAX_SIZE 100000
 
 #include <QString>
 #include <QFile>
@@ -36,6 +36,7 @@ public:
     QVector<foodNode> foods;
     QVector<QString> comments;
     bool operator==(const shopNode & node);
+    void ini();
 };
 
 class hashMap
@@ -48,10 +49,11 @@ public:
     void DelData(QString shopname);
     int size();
     shopNode null_node;
+    shopNode * data;
 private:
     QVector<shopNode> hashmap;
 
-    shopNode * data;
+
 
     int Time33(QString str);
     long int shop_num;
