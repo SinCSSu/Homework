@@ -31,7 +31,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *pushButton;
+    QPushButton *manage_button;
     QPushButton *search_salor_button;
     QPushButton *due_button;
     QPushButton *recommand_button;
@@ -79,10 +79,10 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        pushButton = new QPushButton(User);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        manage_button = new QPushButton(User);
+        manage_button->setObjectName(QString::fromUtf8("manage_button"));
 
-        verticalLayout_2->addWidget(pushButton);
+        verticalLayout_2->addWidget(manage_button);
 
         search_salor_button = new QPushButton(User);
         search_salor_button->setObjectName(QString::fromUtf8("search_salor_button"));
@@ -134,8 +134,8 @@ public:
     {
         User->setWindowTitle(QCoreApplication::translate("User", "Form", nullptr));
         label->setText(QCoreApplication::translate("User", "\347\224\250\346\210\267\347\263\273\347\273\237", nullptr));
-        userinfo->setText(QCoreApplication::translate("User", "TextLabel", nullptr));
-        pushButton->setText(QCoreApplication::translate("User", "\344\270\252\344\272\272\344\277\241\346\201\257\347\256\241\347\220\206", nullptr));
+        userinfo->setText(QString());
+        manage_button->setText(QCoreApplication::translate("User", "\344\270\252\344\272\272\344\277\241\346\201\257\347\256\241\347\220\206", nullptr));
         search_salor_button->setText(QCoreApplication::translate("User", "\346\237\245\350\257\242\345\225\206\345\256\266", nullptr));
         due_button->setText(QCoreApplication::translate("User", "\351\242\204\345\256\232\345\212\237\350\203\275", nullptr));
         recommand_button->setText(QCoreApplication::translate("User", "\346\216\250\350\215\220\345\212\237\350\203\275", nullptr));

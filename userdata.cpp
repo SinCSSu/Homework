@@ -33,7 +33,8 @@ void UserData::GetData()
     {
         data >> arr[i].id >> arr[i].passwd >> arr[i].phone;
         if(arr[i].id == "")
-            break;
+            continue;
+            //break;
         //qDebug() << arr[i].id <<' '<< arr[i].passwd<<' ' << arr[i].phone<< '\n';
         i++;
     }

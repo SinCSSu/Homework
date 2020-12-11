@@ -25,7 +25,6 @@ ShopData::ShopData()
 {
     data = new hashMap;
     GetData();
-    WriteData();
 }
 
 hashMap::hashMap()
@@ -55,11 +54,10 @@ void hashMap::AddData(shopNode node)
     int hash = Time33(node.shop_name);
     hash = hash % MAX_SIZE;
     int offset = 0;
-    if(data[hash + offset].shop_name != "" )
+    if((data[hash + offset].shop_name != "") && data[hash+offset].deled!=true )
     {
         offset++;
     }
-    //hashmap.insert(hash+offset,node);
     data[hash+offset] = node;
     shop_num++;
 }
@@ -189,7 +187,7 @@ void ShopData::GetData()
                 temp->comments.push_back(buff.right(buff.size() - (buff.indexOf(':') + 2)));
             }
         }
-        qDebug() << temp->shop_type;
+        //qDebug() << temp->shop_type;
         data->AddData(*temp);
     }
 }
@@ -202,7 +200,7 @@ void ShopData::WriteData()
     out.setCodec("UTF-8");
     for(int i = 0;i < MAX_SIZE;i++)
     {
-        if(!(data->data[i] == null_node))
+        if(!(data->data[i] == null_node) && !(data->data[i].deled))
         {
             out << "\{" << '\n';
             out << '\t' <<"\"shoptype\": " <<  '\"' << data->data[i].shop_type << "\",\n";

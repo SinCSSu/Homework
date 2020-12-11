@@ -32,7 +32,8 @@ void MainWindow::ini()
         menu->close();
 
         connect(login,&Login::click_back,this,[=](){
-            ini();
+            menu->show();
+            //ini();
             login->close();
         });
 
@@ -42,7 +43,8 @@ void MainWindow::ini()
             login->close();
 
             connect(user,&User::click_back,this,[=](){
-                ini();
+                menu->show();
+                //ini();
                 user->close();
             });
 
@@ -50,6 +52,13 @@ void MainWindow::ini()
                 user->ini_search(this);
                 user->close();
             });
+
+            connect(user,&User::click_manage,this,[=](){
+                user->ini_manger(this);
+                user->close();
+            });
+
+
         });
     });
 
@@ -60,7 +69,7 @@ void MainWindow::ini()
 
         connect(salor,&Salor::click_back,this,[=](){
             salor->close();
-            ini();
+            menu->show();
         });
     });
 
@@ -71,7 +80,7 @@ void MainWindow::ini()
 
         connect(admin,&Administrator::click_back,this,[=](){
             admin->close();
-            ini();
+            menu->show();
         });
     });
 }

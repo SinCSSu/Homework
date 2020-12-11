@@ -63,6 +63,7 @@ SOURCES       = ../administrator.cpp \
 		../shopdata.cpp \
 		../signin.cpp \
 		../user.cpp \
+		../userchange.cpp \
 		../userdata.cpp qrc_ico.cpp \
 		moc_administrator.cpp \
 		moc_login.cpp \
@@ -72,7 +73,8 @@ SOURCES       = ../administrator.cpp \
 		moc_salor.cpp \
 		moc_searchsalor.cpp \
 		moc_signin.cpp \
-		moc_user.cpp
+		moc_user.cpp \
+		moc_userchange.cpp
 OBJECTS       = administrator.o \
 		login.o \
 		main.o \
@@ -84,6 +86,7 @@ OBJECTS       = administrator.o \
 		shopdata.o \
 		signin.o \
 		user.o \
+		userchange.o \
 		userdata.o \
 		qrc_ico.o \
 		moc_administrator.o \
@@ -94,7 +97,8 @@ OBJECTS       = administrator.o \
 		moc_salor.o \
 		moc_searchsalor.o \
 		moc_signin.o \
-		moc_user.o
+		moc_user.o \
+		moc_userchange.o
 DIST          = ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/common/linux.conf \
@@ -315,6 +319,7 @@ DIST          = ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../shopdata.h \
 		../signin.h \
 		../user.h \
+		../userchange.h \
 		../userdata.h ../administrator.cpp \
 		../login.cpp \
 		../main.cpp \
@@ -326,6 +331,7 @@ DIST          = ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../shopdata.cpp \
 		../signin.cpp \
 		../user.cpp \
+		../userchange.cpp \
 		../userdata.cpp
 QMAKE_TARGET  = Homework
 DESTDIR       = 
@@ -335,7 +341,7 @@ TARGET        = Homework
 first: all
 ####### Build rules
 
-Homework: ui_administrator.h ui_login.h ui_mainwindow.h ui_menu.h ui_personmanage.h ui_salor.h ui_searchsalor.h ui_signin.h ui_user.h $(OBJECTS)  
+Homework: ui_administrator.h ui_login.h ui_mainwindow.h ui_menu.h ui_personmanage.h ui_salor.h ui_searchsalor.h ui_signin.h ui_user.h ui_userchange.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Homework.pro ../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf \
@@ -773,9 +779,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../ico.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../administrator.h ../linklist.h ../linkqueue.h ../list.h ../login.h ../mainwindow.h ../menu.h ../personmanage.h ../salor.h ../searchsalor.h ../shopdata.h ../signin.h ../user.h ../userdata.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../administrator.cpp ../login.cpp ../main.cpp ../mainwindow.cpp ../menu.cpp ../personmanage.cpp ../salor.cpp ../searchsalor.cpp ../shopdata.cpp ../signin.cpp ../user.cpp ../userdata.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../administrator.ui ../login.ui ../mainwindow.ui ../menu.ui ../personmanage.ui ../salor.ui ../searchsalor.ui ../signin.ui ../user.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../administrator.h ../linklist.h ../linkqueue.h ../list.h ../login.h ../mainwindow.h ../menu.h ../personmanage.h ../salor.h ../searchsalor.h ../shopdata.h ../signin.h ../user.h ../userchange.h ../userdata.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../administrator.cpp ../login.cpp ../main.cpp ../mainwindow.cpp ../menu.cpp ../personmanage.cpp ../salor.cpp ../searchsalor.cpp ../shopdata.cpp ../signin.cpp ../user.cpp ../userchange.cpp ../userdata.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../administrator.ui ../login.ui ../mainwindow.ui ../menu.ui ../personmanage.ui ../salor.ui ../searchsalor.ui ../signin.ui ../user.ui ../userchange.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -813,9 +819,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h ../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_administrator.cpp moc_login.cpp moc_mainwindow.cpp moc_menu.cpp moc_personmanage.cpp moc_salor.cpp moc_searchsalor.cpp moc_signin.cpp moc_user.cpp
+compiler_moc_header_make_all: moc_administrator.cpp moc_login.cpp moc_mainwindow.cpp moc_menu.cpp moc_personmanage.cpp moc_salor.cpp moc_searchsalor.cpp moc_signin.cpp moc_user.cpp moc_userchange.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_administrator.cpp moc_login.cpp moc_mainwindow.cpp moc_menu.cpp moc_personmanage.cpp moc_salor.cpp moc_searchsalor.cpp moc_signin.cpp moc_user.cpp
+	-$(DEL_FILE) moc_administrator.cpp moc_login.cpp moc_mainwindow.cpp moc_menu.cpp moc_personmanage.cpp moc_salor.cpp moc_searchsalor.cpp moc_signin.cpp moc_user.cpp moc_userchange.cpp
 moc_administrator.cpp: ../administrator.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h \
@@ -1169,26 +1175,37 @@ moc_mainwindow.cpp: ../mainwindow.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../searchsalor.h \
+		../shopdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QStringList \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../personmanage.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../userdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
+		../list.h \
 		../salor.h \
 		../administrator.h \
 		../menu.h \
 		../login.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
-		../userdata.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
-		../list.h \
 		../signin.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QRegExp \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/QValidator \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
 		moc_predefs.h \
 		../../Qt5.14.2/5.14.2/gcc_64/bin/moc
 	/home/sincs/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/sincs/Homework/build/moc_predefs.h -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/sincs/Homework -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../mainwindow.h -o moc_mainwindow.cpp
@@ -1420,6 +1437,18 @@ moc_personmanage.cpp: ../personmanage.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../userdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../list.h \
 		moc_predefs.h \
 		../../Qt5.14.2/5.14.2/gcc_64/bin/moc
 	/home/sincs/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/sincs/Homework/build/moc_predefs.h -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/sincs/Homework -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../personmanage.h -o moc_personmanage.cpp
@@ -1887,17 +1916,148 @@ moc_user.cpp: ../user.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../searchsalor.h \
+		../shopdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QStringList \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../personmanage.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../userdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
+		../list.h \
 		moc_predefs.h \
 		../../Qt5.14.2/5.14.2/gcc_64/bin/moc
 	/home/sincs/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/sincs/Homework/build/moc_predefs.h -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/sincs/Homework -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../user.h -o moc_user.cpp
+
+moc_userchange.cpp: ../userchange.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringview.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qline.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qset.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h \
+		moc_predefs.h \
+		../../Qt5.14.2/5.14.2/gcc_64/bin/moc
+	/home/sincs/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/sincs/Homework/build/moc_predefs.h -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/sincs/Homework -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/sincs/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../userchange.h -o moc_userchange.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_administrator.h ui_login.h ui_mainwindow.h ui_menu.h ui_personmanage.h ui_salor.h ui_searchsalor.h ui_signin.h ui_user.h
+compiler_uic_make_all: ui_administrator.h ui_login.h ui_mainwindow.h ui_menu.h ui_personmanage.h ui_salor.h ui_searchsalor.h ui_signin.h ui_user.h ui_userchange.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_administrator.h ui_login.h ui_mainwindow.h ui_menu.h ui_personmanage.h ui_salor.h ui_searchsalor.h ui_signin.h ui_user.h
+	-$(DEL_FILE) ui_administrator.h ui_login.h ui_mainwindow.h ui_menu.h ui_personmanage.h ui_salor.h ui_searchsalor.h ui_signin.h ui_user.h ui_userchange.h
 ui_administrator.h: ../administrator.ui \
 		../../Qt5.14.2/5.14.2/gcc_64/bin/uic
 	/home/sincs/Qt5.14.2/5.14.2/gcc_64/bin/uic ../administrator.ui -o ui_administrator.h
@@ -1933,6 +2093,10 @@ ui_signin.h: ../signin.ui \
 ui_user.h: ../user.ui \
 		../../Qt5.14.2/5.14.2/gcc_64/bin/uic
 	/home/sincs/Qt5.14.2/5.14.2/gcc_64/bin/uic ../user.ui -o ui_user.h
+
+ui_userchange.h: ../userchange.ui \
+		../../Qt5.14.2/5.14.2/gcc_64/bin/uic
+	/home/sincs/Qt5.14.2/5.14.2/gcc_64/bin/uic ../userchange.ui -o ui_userchange.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -2346,26 +2510,37 @@ main.o: ../main.cpp ../mainwindow.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../searchsalor.h \
+		../shopdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QStringList \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../personmanage.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../userdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
+		../list.h \
 		../salor.h \
 		../administrator.h \
 		../menu.h \
 		../login.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
-		../userdata.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
-		../list.h \
 		../signin.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QRegExp \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/QValidator \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcoreapplication.h \
@@ -2493,26 +2668,37 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../searchsalor.h \
+		../shopdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QStringList \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../personmanage.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../userdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
+		../list.h \
 		../salor.h \
 		../administrator.h \
 		../menu.h \
 		../login.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
-		../userdata.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
-		../list.h \
 		../signin.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QRegExp \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/QValidator \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
 		ui_mainwindow.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication \
@@ -2781,6 +2967,18 @@ personmanage.o: ../personmanage.cpp ../personmanage.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../userdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../list.h \
 		ui_personmanage.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication \
@@ -2789,7 +2987,14 @@ personmanage.o: ../personmanage.cpp ../personmanage.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qeventloop.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qguiapplication.h \
-		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qinputmethod.h
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpacerItem \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o personmanage.o ../personmanage.cpp
 
 salor.o: ../salor.cpp ../salor.h \
@@ -3407,6 +3612,28 @@ user.o: ../user.cpp ../user.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../searchsalor.h \
+		../shopdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QStringList \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../personmanage.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../userdata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray \
+		../list.h \
 		ui_user.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication \
@@ -3425,6 +3652,114 @@ user.o: ../user.cpp ../user.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user.o ../user.cpp
+
+userchange.o: ../userchange.cpp ../userchange.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringview.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qline.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qset.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_userchange.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userchange.o ../userchange.cpp
 
 userdata.o: ../userdata.cpp ../userdata.h \
 		../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
@@ -3532,6 +3867,9 @@ moc_signin.o: moc_signin.cpp
 
 moc_user.o: moc_user.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_user.o moc_user.cpp
+
+moc_userchange.o: moc_userchange.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_userchange.o moc_userchange.cpp
 
 ####### Install
 

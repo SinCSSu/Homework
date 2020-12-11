@@ -25,10 +25,37 @@ void User::ini()
     connect(ui->search_salor_button,&QPushButton::clicked,this,[=](){
         emit click_search();
     });
+    connect(ui->manage_button,&QPushButton::clicked,this,[=](){
+        emit click_manage();
+    });
 }
 
 void User::ini_search(QWidget *parent)
 {
     search = new SearchSalor(parent);
     search->show();
+
+    connect(search,&SearchSalor::click_back,this,[=](){
+        search->close();
+        this->show();
+    });
+}
+
+void User::ini_manger(QWidget *parent)
+{
+    manger = new PersonManage(name,parent);
+    manger->show();
+
+    connect(manger,&PersonManage::click_back,this,[=](){
+        manger->close();
+        this->show();
+    });
+    connect(manger,&PersonManage::logout,this,[=](){
+        manger->close();
+        emit click_back();
+    });
+    connect(manger,&PersonManage::click_change,this,[=](){
+        manger->ini_change(name,this->parentWidget());
+        manger->close();
+    });
 }

@@ -1,7 +1,7 @@
 #ifndef USERDATA_H
 #define USERDATA_H
 
-#define MAX_USER_NUM 100
+#define MAX_USER_NUM 1000
 
 #include <QString>
 #include <QFile>
