@@ -16,6 +16,8 @@ SearchSalor::~SearchSalor()
 
 void SearchSalor::ini()
 {
+    adjmat = new AdjacencyMatrix;
+
     data = new ShopData;
 
     connect(ui->back_button,&QPushButton::clicked,this,[=](){
@@ -35,4 +37,6 @@ void SearchSalor::ini()
 
         }
     });
+
+
 }

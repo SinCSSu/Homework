@@ -1,7 +1,8 @@
 #ifndef SHOPSDATA_H
 #define SHOPSDATA_H
 
-#define MAX_SIZE 100000
+#define MAX_SIZE 5000
+#define inf 0x7fffffff
 
 #include <QString>
 #include <QFile>
@@ -10,6 +11,7 @@
 #include <QStringList>
 #include <QDebug>
 #include <ctime>
+#include <cstring>
 
 
 class foodNode
@@ -52,9 +54,6 @@ public:
     shopNode * data;
 private:
     QVector<shopNode> hashmap;
-
-
-
     int Time33(QString str);
     long int shop_num;
 };
@@ -65,11 +64,29 @@ public:
     ShopData();
     void GetData();
     void WriteData();
+    void AddData(shopNode & node);
+    int size();
     shopNode SearchData(QString name);
     shopNode null_node;
     
 private:
     hashMap *data;
+
+};
+
+
+class AdjacencyMatrix
+{
+public:
+    AdjacencyMatrix();
+    void GetData();
+    //void Dijkstra();
+
+
+private:
+    float ** matrix;
+    float * dis;
+    ShopData * shop;
 
 };
 

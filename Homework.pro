@@ -24,6 +24,7 @@ SOURCES += \
     menu.cpp \
     personmanage.cpp \
     reserve.cpp \
+    reservequeue.cpp \
     reservereturn.cpp \
     salor.cpp \
     searchsalor.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     menu.h \
     personmanage.h \
     reserve.h \
+    reservequeue.h \
     reservereturn.h \
     salor.h \
     searchsalor.h \

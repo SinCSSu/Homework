@@ -61,28 +61,28 @@
    <item row="1" column="1">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="check_all_button">
        <property name="text">
         <string>查询所有预定</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="check_button">
        <property name="text">
         <string>查询某个预定</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="add_button">
        <property name="text">
         <string>添加预定</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="back_button">
        <property name="text">
         <string>返回上一级</string>
        </property>

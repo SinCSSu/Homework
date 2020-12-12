@@ -53,11 +53,13 @@ void hashMap::AddData(shopNode node)
 {
     int hash = Time33(node.shop_name);
     hash = hash % MAX_SIZE;
+    //qDebug() << hash;
     int offset = 0;
     if((data[hash + offset].shop_name != "") && data[hash+offset].deled!=true )
     {
         offset++;
     }
+    node.hash_code = hash+offset;
     data[hash+offset] = node;
     shop_num++;
 }
@@ -93,6 +95,11 @@ shopNode& hashMap::SearchData(QString shopname)
     }
     else
         return null_node;
+}
+
+int hashMap::size()
+{
+    return shop_num;
 }
 
 
@@ -192,6 +199,16 @@ void ShopData::GetData()
     }
 }
 
+int ShopData::size()
+{
+    return data->size();
+}
+
+void ShopData::AddData(shopNode &node)
+{
+    data->AddData(node);
+}
+
 void ShopData::WriteData()
 {
     QFile output("./data/output_test.txt");
@@ -232,4 +249,81 @@ void ShopData::WriteData()
 shopNode ShopData::SearchData(QString name)
 {
     return data->SearchData(name);
+}
+
+AdjacencyMatrix::AdjacencyMatrix()
+{
+    shop = new ShopData;
+    shop->GetData();
+
+    shopNode *temp = new shopNode;
+    temp->shop_name = QString("北林");
+    temp->shop_id = QString("512324");
+
+    shop->AddData(*temp);
+
+    //qDebug() << shop->size();
+
+    //qDebug() << "test point 1";
+
+    matrix = new float*[MAX_SIZE];
+    for(int i = 0; i< MAX_SIZE;i++)
+    {
+        matrix[i] = new float[MAX_SIZE];
+        memset(matrix[i],inf,sizeof(int)*MAX_SIZE);
+        qDebug() << "test point 3";
+    }
+
+    //qDebug() << "test point 2";
+    dis = new float[MAX_SIZE];
+    memset(dis,inf,sizeof(int)*MAX_SIZE);
+
+    //qDebug() << "test point 4";
+
+    GetData();
+}
+
+void AdjacencyMatrix::GetData()
+{
+    QFile input("./data/distance.txt");
+
+    input.open(QFile::ReadOnly);
+
+    char * read = new char[500];
+
+    input.readLine(read,500);
+
+    memset(read,0,sizeof(char)*500);
+
+
+
+    while(!input.atEnd())
+    {
+        input.readLine(read,500);
+        QString temp(read);
+        QStringList data_list_1,data_list_2;
+        temp.remove('\r');
+        temp.remove('\n');
+        data_list_1 = temp.split(' ');
+        data_list_2 = data_list_1[3].split(':');
+        data_list_1.pop_back();
+        data_list_1 += data_list_2;
+        int hash1,hash2;
+
+        hash1 = shop->SearchData(data_list_1[1]).hash_code;
+        hash2 = shop->SearchData(data_list_1[3]).hash_code;
+
+        //qDebug() << data_list_1;
+
+
+        matrix[hash1][hash2] = data_list_1[4].toFloat();
+
+        //qDebug() << hash1 << " " <<hash2 << " " << data_list_1[1] << ' ' <<  data_list_1[3] << ' ' <<  matrix[hash1][hash2];
+    }
+    input.close();
+}
+
+void AdjacencyMatrix::Dijkstra()
+{
+
 }

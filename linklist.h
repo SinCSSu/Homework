@@ -24,6 +24,8 @@ public:
     T GetBack();
     bool IsEmpty();
     int Size();
+    //LinkList operator=(const LinkList & list);
+
 
 protected:
     Node<T> * head;
@@ -122,6 +124,7 @@ bool LinkList<T>::IsEmpty()
 {
     return length == 0;
 }
+
 
 
 #endif // LINKLIST_H

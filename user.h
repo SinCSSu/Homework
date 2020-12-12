@@ -7,6 +7,7 @@
 #include <QString>
 #include "searchsalor.h"
 #include "personmanage.h"
+#include "reserve.h"
 
 
 namespace Ui {
@@ -29,6 +30,7 @@ private:
     QString name;
     SearchSalor *search;
     PersonManage * manger;
+    Reserve * reserve;
 
 
 signals:

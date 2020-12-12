@@ -99,10 +99,10 @@ void Signin::sign()
             {
                 user->AddData(userNode(username,passwd,phone),user->size());
             }
-            for(int i = 0 ; i < user->size();i++)
-            {
-                qDebug() << user->arr[i].id << ' ' << user->arr[i].phone << user->arr[i].passwd << '\n';
-            }
+//            for(int i = 0 ; i < user->size();i++)
+//            {
+//                qDebug() << user->arr[i].id << ' ' << user->arr[i].phone << user->arr[i].passwd << '\n';
+//            }
             user->WriteData();
             QMessageBox::StandardButton result =  QMessageBox::information(NULL,"注册成功","注册成功");
             if(result == QMessageBox::Ok)

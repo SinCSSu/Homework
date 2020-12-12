@@ -28,6 +28,17 @@ void User::ini()
     connect(ui->manage_button,&QPushButton::clicked,this,[=](){
         emit click_manage();
     });
+
+    connect(ui->due_button,&QPushButton::clicked,this,[=](){
+        reserve = new Reserve(name,this->parentWidget());
+        reserve->show();
+        close();
+
+        connect(reserve,&Reserve::click_back,this,[=](){
+            reserve->close();
+            show();
+        });
+    });
 }
 
 void User::ini_search(QWidget *parent)

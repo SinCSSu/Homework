@@ -23,6 +23,8 @@ private:
     void ini();
 
     ShopData * data;
+    AdjacencyMatrix * adjmat;
+
 signals:
     void click_back();
 };

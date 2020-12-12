@@ -2,6 +2,7 @@
 #define LINKQUEUE_H
 
 #include "linklist.h"
+#include <cstring>
 
 template <class T>
 class LinkQueue:protected LinkList<T>
@@ -13,6 +14,7 @@ public:
     T front();
     bool empty();
     int size();
+    LinkQueue<T> operator=(const LinkQueue<T> & queue);
 
 private:
     LinkList<T> * queue;
@@ -53,6 +55,17 @@ template <class T>
 int LinkQueue<T>::size()
 {
     return queue->Size();
+}
+
+template <class T>
+LinkQueue<T> LinkQueue<T>::operator=(const LinkQueue<T> & queue)
+{
+    Node<T> * p = queue.head;
+    for(int i = 0 ;i < queue.size();i++)
+    {
+        push(p->data);
+        p = p->next;
+    }
 }
 
 
